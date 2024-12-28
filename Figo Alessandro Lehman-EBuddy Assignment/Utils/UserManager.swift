@@ -1,5 +1,5 @@
 //
-//  UserViewModel.swift
+//  UserManager.swift
 //  Figo Alessandro Lehman-EBuddy Assignment
 //
 //  Created by Figo Alessandro Lehman on 28/12/24.
@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-class UserViewModel: ObservableObject {
+class UserManager: ObservableObject {
   @Published var users: Result<[User], Error>? = nil
   @Published var uploadImageStatus: Result<Bool, Error>? = nil
   @Published var userProfileImage: Result<Data, Error>? = nil
@@ -16,6 +16,10 @@ class UserViewModel: ObservableObject {
   @Published var profileImageList: [String: Data] = [:]
 
   private var userUseCase = UserUseCase()
+
+  public static let shared = UserManager()
+
+  private init() {}
 
   func getUsers() {
     Task {

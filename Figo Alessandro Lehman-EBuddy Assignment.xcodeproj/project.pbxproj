@@ -30,9 +30,9 @@
 		1B2DEAFA2D1EC0B20034C942 /* FirestoreDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2DEAF92D1EC0B20034C942 /* FirestoreDB.swift */; };
 		1B2DEAFB2D1EC0B20034C942 /* FirestoreDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2DEAF92D1EC0B20034C942 /* FirestoreDB.swift */; };
 		1B2DEAFC2D1EC0B20034C942 /* FirestoreDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2DEAF92D1EC0B20034C942 /* FirestoreDB.swift */; };
-		1B2DEB012D1F226E0034C942 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2DEB002D1F226E0034C942 /* UserViewModel.swift */; };
-		1B2DEB022D1F226E0034C942 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2DEB002D1F226E0034C942 /* UserViewModel.swift */; };
-		1B2DEB032D1F226E0034C942 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2DEB002D1F226E0034C942 /* UserViewModel.swift */; };
+		1B2DEB012D1F226E0034C942 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2DEB002D1F226E0034C942 /* UserManager.swift */; };
+		1B2DEB022D1F226E0034C942 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2DEB002D1F226E0034C942 /* UserManager.swift */; };
+		1B2DEB032D1F226E0034C942 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2DEB002D1F226E0034C942 /* UserManager.swift */; };
 		1B2DEB062D1F25A00034C942 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2DEB052D1F25A00034C942 /* User.swift */; };
 		1B2DEB072D1F25A00034C942 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2DEB052D1F25A00034C942 /* User.swift */; };
 		1B2DEB082D1F25A00034C942 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2DEB052D1F25A00034C942 /* User.swift */; };
@@ -64,7 +64,7 @@
 		1B2DEAF02D1EBF8F0034C942 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		1B2DEAF42D1EBFA20034C942 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
 		1B2DEAF92D1EC0B20034C942 /* FirestoreDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreDB.swift; sourceTree = "<group>"; };
-		1B2DEB002D1F226E0034C942 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		1B2DEB002D1F226E0034C942 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		1B2DEB052D1F25A00034C942 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1B43B70D2D1E76D200F671BB /* Figo Alessandro Lehman-EBuddy Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Figo Alessandro Lehman-EBuddy Assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B43B7102D1E76D200F671BB /* Figo_Alessandro_Lehman_EBuddy_AssignmentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figo_Alessandro_Lehman_EBuddy_AssignmentApp.swift; sourceTree = "<group>"; };
@@ -168,7 +168,6 @@
 		1B2DEAFD2D1F15D40034C942 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				1B2DEAFF2D1F15F70034C942 /* ViewModels */,
 				1B2DEAFE2D1F15F40034C942 /* Views */,
 			);
 			path = User;
@@ -180,14 +179,6 @@
 				1B43B7122D1E76D200F671BB /* UserListView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		1B2DEAFF2D1F15F70034C942 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				1B2DEB002D1F226E0034C942 /* UserViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		1B2DEB042D1F24AF0034C942 /* Model */ = {
@@ -252,6 +243,7 @@
 		1B43B7212D1E77F200F671BB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1B2DEB002D1F226E0034C942 /* UserManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -476,7 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B2DEAED2D1EB7560034C942 /* UserJSON.swift in Sources */,
-				1B2DEB032D1F226E0034C942 /* UserViewModel.swift in Sources */,
+				1B2DEB032D1F226E0034C942 /* UserManager.swift in Sources */,
 				1B2DEADB2D1EAEE50034C942 /* AppDelegate.swift in Sources */,
 				1B2DEAF72D1EBFA20034C942 /* UserUseCase.swift in Sources */,
 				1B2DEADC2D1EAEE80034C942 /* UserListView.swift in Sources */,
@@ -492,7 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B2DEAEB2D1EB7560034C942 /* UserJSON.swift in Sources */,
-				1B2DEB012D1F226E0034C942 /* UserViewModel.swift in Sources */,
+				1B2DEB012D1F226E0034C942 /* UserManager.swift in Sources */,
 				1B2DEAAA2D1EAB9A0034C942 /* Figo_Alessandro_Lehman_EBuddy_AssignmentApp.swift in Sources */,
 				1B2DEAF52D1EBFA20034C942 /* UserUseCase.swift in Sources */,
 				1B43B7252D1E781C00F671BB /* AppDelegate.swift in Sources */,
@@ -508,7 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B2DEAEC2D1EB7560034C942 /* UserJSON.swift in Sources */,
-				1B2DEB022D1F226E0034C942 /* UserViewModel.swift in Sources */,
+				1B2DEB022D1F226E0034C942 /* UserManager.swift in Sources */,
 				1B5696512D1EA7EC00311782 /* AppDelegate.swift in Sources */,
 				1B2DEAF62D1EBFA20034C942 /* UserUseCase.swift in Sources */,
 				1BBD81982D1EA10B00D24925 /* UserListView.swift in Sources */,

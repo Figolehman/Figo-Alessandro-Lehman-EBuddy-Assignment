@@ -9,7 +9,7 @@ import PhotosUI
 import SwiftUI
 
 struct UserListView: View {
-  @StateObject private var userVM = UserViewModel()
+  @ObservedObject private var userManager = UserManager.shared
 
   @State private var isShowingPhotosPicker = false
   @State private var selectedItem: PhotosPickerItem? = nil
@@ -18,12 +18,12 @@ struct UserListView: View {
   var body: some View {
     VStack {
       Button {
-        userVM.getUsers()
+        userManager.getUsers()
       } label: {
         Text("Get Users")
       }
 
-      if let users = try? userVM.users?.get() {
+      if let users = try? userManager.users?.get() {
         if users.count > 0 {
           Text("Swipe Right on List Item to Upload Image")
           List(users, id: \.uid) { user in
@@ -52,14 +52,14 @@ struct UserListView: View {
             }
             .onAppear {
               if let uid = user.uid {
-                userVM.getUserProfileImage(uid: uid)
+                userManager.getUserProfileImage(uid: uid)
               }
             }
           }
         } else {
           Text("List is empty")
         }
-      } else if case let .failure(error) = userVM.users {
+      } else if case let .failure(error) = userManager.users {
         Text(error.localizedDescription)
       }
     }
@@ -77,7 +77,7 @@ struct UserListView: View {
         switch result {
         case .success(let data):
           guard let data else { return }
-          userVM.uploadImage(
+          userManager.uploadImage(
             uid: selectedUser.uid ?? "",
             data: data
           )
@@ -89,7 +89,7 @@ struct UserListView: View {
   }
 
   fileprivate func getUserProfileImage(uid: String) -> UIImage {
-    return UIImage(data: userVM.profileImageList[uid] ?? Data()) ?? UIImage(systemName: "person.crop.circle")!
+    return UIImage(data: userManager.profileImageList[uid] ?? Data()) ?? UIImage(systemName: "person.crop.circle")!
   }
 }
 
