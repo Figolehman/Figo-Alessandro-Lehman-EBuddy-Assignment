@@ -6,6 +6,7 @@
 //
 
 import FirebaseFirestore
+import FirebaseStorage
 
 class UserRepository {
   func getUsers() async -> Result<[User], Error> {
@@ -21,6 +22,30 @@ class UserRepository {
         print("Document does not exist")
         return .success([])
       }
+    } catch {
+      print(error.localizedDescription)
+      return .failure(error)
+    }
+  }
+
+  // MARK: - If error does not exist, boolean result will always be true
+  func uploadImage(uid: String, data: Data) async -> Result<Bool, Error> {
+    let fileRef = Storage.storage().reference().child("images/\(uid).jpg")
+    do {
+      let _ = try await fileRef.putDataAsync(data)
+      return .success(true)
+    } catch {
+      print(error.localizedDescription)
+      return .failure(error)
+    }
+  }
+
+  func getUserProfileImage(uid: String) async -> Result<Data, Error> {
+    let fileRef = Storage.storage().reference().child("images/\(uid).jpg")
+    do {
+      // MARK: - x * 1024 * 1024 = x MB
+      let data = try await fileRef.data(maxSize: 1 * 1024 * 1024)
+      return .success(data)
     } catch {
       print(error.localizedDescription)
       return .failure(error)
