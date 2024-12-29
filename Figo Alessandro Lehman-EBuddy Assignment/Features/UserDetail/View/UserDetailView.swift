@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct UserDetailView: View {
+  @Environment(\.colorScheme) private var colorScheme
+
   var body: some View {
     VStack(spacing: getScaledHeight(12)) {
       HStack(spacing: getScaledWidth(8)) {
@@ -26,7 +28,9 @@ struct UserDetailView: View {
           .scaledFrame(width: 20, height: 20)
 
         Image(.icInstagram)
+          .renderingMode(.template)
           .resizable()
+          .foregroundColor(.textPrimary)
           .scaledFrame(width: 20, height: 20)
       }
       .padding(.horizontal, getScaledWidth(8))
@@ -73,7 +77,9 @@ struct UserDetailView: View {
                 .scaledFrame(width: 40, height: 40)
 
               Image(.icSoundWave)
+                .renderingMode(.template)
                 .resizable()
+                .foregroundColor(colorScheme == .light ? .textOnDarkBackground : .iconDark)
                 .scaledFrame(width: 24, height: 24)
             }
             .padding(.trailing, getScaledWidth(8))
