@@ -12,7 +12,7 @@ struct Figo_Alessandro_Lehman_EBuddy_AssignmentApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
   var body: some Scene {
     WindowGroup {
-      UserDetailView()
+      UserListView()
     }
   }
 }

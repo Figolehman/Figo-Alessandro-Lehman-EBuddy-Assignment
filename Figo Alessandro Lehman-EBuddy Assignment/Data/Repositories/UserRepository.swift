@@ -51,4 +51,29 @@ class UserRepository {
       return .failure(error)
     }
   }
+
+  func getSpecificUsers() async -> Result<[User], Error> {
+    do {
+      let document = try await FirestoreDB.instance.collection("USERS")
+        .order(by: "last_active", descending: true)
+        .order(by: "rating", descending: true)
+        .whereField("ge", isEqualTo: 0)
+        .order(by: "price", descending: false)
+        .getDocuments()
+
+      if !document.isEmpty {
+        let data = try document.documents.compactMap {
+          try $0.data(as: UserJSON.self)
+        }
+
+        return .success(data)
+      } else {
+        print("Document does not exist")
+        return .success([])
+      }
+    } catch {
+      print(error.localizedDescription)
+      return .failure(error)
+    }
+  }
 }

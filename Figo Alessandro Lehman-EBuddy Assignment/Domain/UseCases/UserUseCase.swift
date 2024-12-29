@@ -21,4 +21,8 @@ class UserUseCase {
   func getUserProfileImage(uid: String) async -> Result<Data, Error> {
     await repository.getUserProfileImage(uid: uid)
   }
+
+  func getSpecificUsers() async -> Result<[User], Error> {
+    await repository.getSpecificUsers()
+  }
 }

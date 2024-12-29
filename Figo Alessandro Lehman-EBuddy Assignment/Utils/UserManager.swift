@@ -43,4 +43,10 @@ class UserManager: ObservableObject {
       }
     }
   }
+
+  func getSpecificUsers() {
+    Task {
+      users = await userUseCase.getSpecificUsers()
+    }
+  }
 }

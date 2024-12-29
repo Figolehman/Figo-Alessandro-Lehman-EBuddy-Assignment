@@ -23,6 +23,12 @@ struct UserListView: View {
         Text("Get Users")
       }
 
+      Button {
+        userManager.getSpecificUsers()
+      } label: {
+        Text("Get Specific Users with Multiple Queries")
+      }
+
       if let users = try? userManager.users?.get() {
         if users.count > 0 {
           Text("Swipe Right on List Item to Upload Image")
